@@ -28,8 +28,6 @@ import sttp.tapir.server.jdkhttp.*
     val request = basicRequest.get(uri"http://localhost/hello?name=Fred Flintstone")
     val response = client.send(request)
     println( response.body )
-  finally client.close()
-
-  sys.ShutdownHookThread {
+  finally
+    client.close()
     jdkHttpServer.stop(0)
-  }
