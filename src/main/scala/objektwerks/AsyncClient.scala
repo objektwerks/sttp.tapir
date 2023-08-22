@@ -29,8 +29,8 @@ import sttp.client3.{HttpClientFutureBackend, Response, UriContext, basicRequest
       r <- response
     yield
       r.body match
-        case Left(error) => println( s"*** Sync Client error: $error" )
-        case Right(json) => println( s"*** Sync Client response: ${parseJson(json)}" )
+        case Left(error) => println( s"*** Async Client error: $error" )
+        case Right(json) => println( s"*** Async Client response: ${parseJson(json)}" )
 
 
   def parseJson(json: String): String = ujson.read(json)("value").str
