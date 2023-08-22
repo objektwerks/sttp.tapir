@@ -13,3 +13,7 @@ Test
 Run
 ---
 1. sbt run
+
+Resources
+---------
+1.[Sttp](https://sttp.softwaremill.com/en/stable/#)
