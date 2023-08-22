@@ -22,7 +22,7 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
   try
     val request = basicRequest.get(uri"https://api.chucknorris.io/jokes/random")
     val response = request.send(backend)
-    Await.result(response, 30.seconds) // required to keep this @main method / thread alive!
+    Await.result(response, 30.seconds) // Keep the main thread alive for 30 seconds.
     parseResponse(response)
   finally backend.close()
 
