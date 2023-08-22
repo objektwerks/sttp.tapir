@@ -3,7 +3,7 @@ package objektwerks
 import sttp.client3.{basicRequest, SimpleHttpClient, UriContext}
 import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 
-@main def runSyncClient(): Unit =
+@main def runSttpSyncClient(): Unit =
   val client = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
 
   try
