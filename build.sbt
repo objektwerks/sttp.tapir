@@ -4,6 +4,8 @@ version := "0.1-SNAPSHOT"
 scalaVersion := "3.3.1-RC5"
 libraryDependencies ++= {
   Seq(
+    "com.typesafe" % "config" % "1.4.2",
+    "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
     "org.scalatest" %% "scalatest" % "3.2.16" % Test
   )
 }
