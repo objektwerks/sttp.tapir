@@ -6,7 +6,7 @@ import java.util.concurrent.Executors
 import scala.concurrent.{Await, ExecutionContext}
 import scala.concurrent.duration.*
 
-import sttp.client3.{HttpClientFutureBackend, Response, UriContext, basicRequest}
+import sttp.client3.{basicRequest, HttpClientFutureBackend, Response, UriContext}
 import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 
 @main def runAsyncClient(): Unit =
