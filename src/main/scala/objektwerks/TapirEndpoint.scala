@@ -2,8 +2,10 @@ package objektwerks
 
 import java.util.concurrent.Executors
 
-import sttp.tapir._
-import sttp.tapir.server.jdkhttp._
+import sttp.client3.{basicRequest, SimpleHttpClient, UriContext}
+import sttp.client3.logging.slf4j.Slf4jLoggingBackend
+import sttp.tapir.*
+import sttp.tapir.server.jdkhttp.*
 
 @main def runTapirEndpoint(): Unit =
   val helloEndpoint = endpoint
@@ -19,6 +21,14 @@ import sttp.tapir.server.jdkhttp._
     .port(7777)
     .addEndpoint(helloEndpoint)
     .start()
+
+  val client = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
+
+  try
+    val request = basicRequest.get(uri"http://localhost/hello?name=Fred Flintstone")
+    val response = client.send(request)
+    println( response.body )
+  finally client.close()
 
   sys.ShutdownHookThread {
     jdkHttpServer.stop(0)
