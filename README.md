@@ -17,3 +17,4 @@ Run
 Resources
 ---------
 1.[Sttp](https://sttp.softwaremill.com/en/stable/#)
+2. [Tapir](https://tapir.softwaremill.com/en/latest/index.html)
