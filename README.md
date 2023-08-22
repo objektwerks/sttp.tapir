@@ -15,8 +15,8 @@ Run
 1. sbt run
 ```
 Multiple main classes detected. Select one to run:
- [1] objektwerks.runAsyncClient
- [2] objektwerks.runSyncClient
+ [1] objektwerks.runSttpAsyncClient
+ [2] objektwerks.runSttpSyncClient
  [3] objektwerks.runTapirEndpoint
 
 Enter number:
