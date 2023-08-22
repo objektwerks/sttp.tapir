@@ -27,7 +27,12 @@ import sttp.tapir.server.jdkhttp.*
   try
     val request = basicRequest.get(uri"http://localhost:7777/hello?name=Fred Flintstone")
     val response = client.send(request)
-    println( response.body )
+    println( parseResponse(response.body) )
   finally
     client.close()
     jdkHttpServer.stop(0)
+
+  def parseResponse(response: Either[String, String]): String =
+  response match
+    case Left(error) => s"*** Tapir Endpoint Client error: $error"
+    case Right(text) => s"*** Tapir Endpoint Client response: $text"
