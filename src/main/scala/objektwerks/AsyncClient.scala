@@ -16,6 +16,7 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
                 .newBuilder
                 .executor( Executors.newVirtualThreadPerTaskExecutor() )
                 .build
+
   val backend = Slf4jLoggingBackend( HttpClientFutureBackend.usingClient(client) )
 
   try
