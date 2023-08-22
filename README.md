@@ -13,6 +13,13 @@ Test
 Run
 ---
 1. sbt run
+```
+Multiple main classes detected. Select one to run:
+ [1] objektwerks.runAsyncClient
+ [2] objektwerks.runSyncClient
+
+Enter number: 
+```
 
 Resources
 ---------
