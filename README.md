@@ -17,8 +17,9 @@ Run
 Multiple main classes detected. Select one to run:
  [1] objektwerks.runAsyncClient
  [2] objektwerks.runSyncClient
+ [3] objektwerks.runTapirEndpoint
 
-Enter number: 
+Enter number:
 ```
 
 Resources
