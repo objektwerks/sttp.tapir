@@ -33,6 +33,6 @@ import sttp.tapir.server.jdkhttp.*
     jdkHttpServer.stop(0)
 
   def parseResponse(response: Either[String, String]): String =
-  response match
-    case Left(error) => s"*** Tapir Endpoint Client error: $error"
-    case Right(text) => s"*** Tapir Endpoint Client response: $text"
+    response match
+      case Left(error) => s"*** Tapir Endpoint Client error: $error"
+      case Right(text) => s"*** Tapir Endpoint Client response: $text"
