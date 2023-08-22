@@ -25,7 +25,7 @@ import sttp.tapir.server.jdkhttp.*
   val client = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
 
   try
-    val request = basicRequest.get(uri"http://localhost/hello?name=Fred Flintstone")
+    val request = basicRequest.get(uri"http://localhost:7777/hello?name=Fred Flintstone")
     val response = client.send(request)
     println( response.body )
   finally
