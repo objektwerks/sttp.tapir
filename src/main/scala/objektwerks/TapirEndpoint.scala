@@ -1,5 +1,7 @@
 package objektwerks
 
+import java.util.concurrent.Executors
+
 import sttp.tapir._
 import sttp.tapir.server.jdkhttp._
 
@@ -12,9 +14,10 @@ import sttp.tapir.server.jdkhttp._
     .handle(name => Right(s"Hello, $name!"))
 
   val jdkHttpServer = JdkHttpServer()
-    .addEndpoint(helloEndpoint)
+    .executor( Executors.newVirtualThreadPerTaskExecutor() )
     .host("localhost")
     .port(7777)
+    .addEndpoint(helloEndpoint)
     .start()
 
   sys.ShutdownHookThread {
