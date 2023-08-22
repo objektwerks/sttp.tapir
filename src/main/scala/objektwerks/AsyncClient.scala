@@ -5,8 +5,10 @@ import java.util.concurrent.Executors
 
 import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.jdk.FutureConverters.*
 
-import sttp.client3.{HttpClientFutureBackend, UriContext, basicRequest}
+import sttp.capabilities.WebSockets
+import sttp.client3.{HttpClientFutureBackend, Response, SttpBackend, UriContext, basicRequest}
 import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 
 @main def runAsyncClient(): Unit =
@@ -24,7 +26,7 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
     println( parseResponse(response) )
   finally backend.close()
 
-  def parseResponse(response: Either[String, String]): String =
+  def parseResponse(response: concurrent.Future[Response[Either[String, String]]]): String =
     response match
       case Left(error) => s"*** Sync Client error: $error"
       case Right(json) => s"*** Sync Client response: ${parseJson(json)}"
