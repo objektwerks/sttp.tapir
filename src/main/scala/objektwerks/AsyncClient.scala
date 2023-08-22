@@ -34,5 +34,4 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
         case Left(error) => println( s"*** Async Client error: $error" )
         case Right(json) => println( s"*** Async Client response: ${parseJson(json)}" )
 
-
   def parseJson(json: String): String = ujson.read(json)("value").str
