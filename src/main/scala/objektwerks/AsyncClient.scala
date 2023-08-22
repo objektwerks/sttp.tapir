@@ -3,7 +3,8 @@ package objektwerks
 import java.net.http.HttpClient
 import java.util.concurrent.Executors
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{Await, ExecutionContext}
+import scala.concurrent.duration.*
 
 import sttp.client3.{HttpClientFutureBackend, Response, UriContext, basicRequest}
 
@@ -19,6 +20,7 @@ import sttp.client3.{HttpClientFutureBackend, Response, UriContext, basicRequest
   try
     val request = basicRequest.get(uri"https://api.chucknorris.io/jokes/random")
     val response = request.send(backend)
+    Await.result(response, 30.seconds)
     parseResponse(response)
   finally backend.close()
 
