@@ -14,7 +14,7 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 
   def parseResponse(response: Either[String, String]): String =
     response match
-      case Left(error) => s"*** Sync Client error: $error"
-      case Right(json) => s"*** Sync Client response: ${parseJson(json)}"
+      case Left(error) => s"*** Sttp Sync Client error: $error"
+      case Right(json) => s"*** Sttp Sync Client response: ${parseJson(json)}"
 
   def parseJson(json: String): String = ujson.read(json)("value").str
