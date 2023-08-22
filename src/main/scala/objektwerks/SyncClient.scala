@@ -1,9 +1,10 @@
 package objektwerks
 
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
+import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 
 @main def runSyncClient(): Unit =
-  val client = SimpleHttpClient()
+  val client = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
   val response = client.send( basicRequest.get(uri"https://api.chucknorris.io/jokes/random") )
   println( parseResponse( response.body ) )
   client.close()
