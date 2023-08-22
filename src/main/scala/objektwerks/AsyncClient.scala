@@ -7,6 +7,7 @@ import scala.concurrent.{Await, ExecutionContext}
 import scala.concurrent.duration.*
 
 import sttp.client3.{HttpClientFutureBackend, Response, UriContext, basicRequest}
+import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 
 @main def runAsyncClient(): Unit =
   given executionContext: ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
@@ -15,7 +16,7 @@ import sttp.client3.{HttpClientFutureBackend, Response, UriContext, basicRequest
                 .newBuilder
                 .executor( Executors.newVirtualThreadPerTaskExecutor() )
                 .build
-  val backend = HttpClientFutureBackend.usingClient(client)
+  val backend = Slf4jLoggingBackend( HttpClientFutureBackend.usingClient(client) )
 
   try
     val request = basicRequest.get(uri"https://api.chucknorris.io/jokes/random")
