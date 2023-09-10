@@ -1,7 +1,7 @@
 name := "sttp.tapir"
 organization := "objektwerks"
 version := "0.1-SNAPSHOT"
-scalaVersion := "3.3.1-RC7"
+scalaVersion := "3.3.1"
 libraryDependencies ++= {
   Seq(
     "com.softwaremill.sttp.client3" %% "core" % "3.9.0",
