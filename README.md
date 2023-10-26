@@ -1,6 +1,6 @@
 Sttp & Tapir
 ------------
->Sttp and Tapir feature tests using Scala 3.
+>Sttp and Tapir feature tests using uJson and Scala 3.
 
 Build
 -----
