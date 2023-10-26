@@ -3,6 +3,8 @@ organization := "objektwerks"
 version := "0.1-SNAPSHOT"
 scalaVersion := "3.3.1"
 libraryDependencies ++= {
+  val sttpVersion = "3.9.0"
+  val tapirVersion = "1.8.2"
   Seq(
     "com.softwaremill.sttp.client3" %% "core" % "3.9.0",
     "com.softwaremill.sttp.tapir" %% "tapir-core" % "1.8.2",
