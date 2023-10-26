@@ -8,7 +8,7 @@ libraryDependencies ++= {
     "com.softwaremill.sttp.tapir" %% "tapir-core" % "1.8.2",
     "com.softwaremill.sttp.tapir" %% "tapir-jdkhttp-server" % "1.8.2",
     "com.softwaremill.sttp.client3" %% "slf4j-backend" % "3.9.0",
-    "com.lihaoyi" %% "ujson" % "3.1.2",
+    "com.lihaoyi" %% "ujson" % "3.1.3",
     "org.scalatest" %% "scalatest" % "3.2.17" % Test
   )
 }
