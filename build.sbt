@@ -11,7 +11,7 @@ libraryDependencies ++= {
     "com.softwaremill.sttp.tapir" %% "tapir-core" % tapirVersion,
     "com.softwaremill.sttp.tapir" %% "tapir-jdkhttp-server" % tapirVersion,
     "com.lihaoyi" %% "ujson" % "3.2.0",
-    "org.scalatest" %% "scalatest" % "3.2.17" % Test
+    "org.scalatest" %% "scalatest" % "3.2.18" % Test
   )
 }
 scalacOptions ++= Seq(
