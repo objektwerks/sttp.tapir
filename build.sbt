@@ -11,6 +11,7 @@ libraryDependencies ++= {
     "com.softwaremill.sttp.client3" %% "slf4j-backend" % sttpVersion,
     "com.softwaremill.sttp.tapir" %% "tapir-core" % tapirVersion,
     "com.softwaremill.sttp.tapir" %% "tapir-jdkhttp-server" % tapirVersion,
+    "com.softwaremill.sttp.tapir" %% "tapir-jsoniter-scala" % tapirVersion,
     "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-core" % jsoniterVersion,
     "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-macros" % jsoniterVersion % Provided,
     "com.lihaoyi" %% "ujson" % "4.0.1",
