@@ -20,9 +20,9 @@ import Event.given
       .in(jsonBody[Command])
       .out(jsonBody[Event])
       .handleSuccess { command =>
-        println(s"endpoint command: $command")
-        val event = Event(command.name)
-        println(s"endpoint event: $event")
+        println(s"*** endpoint command: $command")
+        val event = Event(s"${command.name} -> test event")
+        println(s"*** endpoint event: $event")
         event
       }
 
@@ -37,7 +37,7 @@ import Event.given
   val httpClient = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
 
   try
-    val command = Command("test")
+    val command = Command("test command")
     val commandJson = writeToString(command)
     val request = basicRequest
       .contentType("application/json")
