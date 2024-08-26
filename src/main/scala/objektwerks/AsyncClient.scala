@@ -18,14 +18,14 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
       .executor( Executors.newVirtualThreadPerTaskExecutor() )
       .build
 
-  val backend = Slf4jLoggingBackend( HttpClientFutureBackend.usingClient(httpClient) )
+  val sttpBackend = Slf4jLoggingBackend( HttpClientFutureBackend.usingClient(httpClient) )
 
   try
     val request = basicRequest.get(uri"https://api.chucknorris.io/jokes/random")
-    val response = request.send(backend)
+    val response = request.send(sttpBackend)
     Await.result(response, 30.seconds) // Keep the main thread alive for 30 seconds.
     parseResponse(response).map { joke => println(joke) }
-  finally backend.close()
+  finally sttpBackend.close()
 
   def parseResponse(futureResponse: Future[Response[Either[String, String]]]): Future[String] =
     for
