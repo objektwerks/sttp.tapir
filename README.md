@@ -13,9 +13,10 @@ Run
 Multiple main classes detected. Select one to run:
  [1] objektwerks.runAsyncClient
  [2] objektwerks.runEndpoint
- [3] objektwerks.runSyncClient
+ [3] objektwerks.runServer
+ [4] objektwerks.runSyncClient
 
-Enter number: 
+Enter number:
 ```
 
 Resources
