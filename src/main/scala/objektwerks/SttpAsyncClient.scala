@@ -3,19 +3,20 @@ package objektwerks
 import java.net.http.HttpClient
 import java.util.concurrent.Executors
 
-import scala.concurrent.{Await, ExecutionContext}
+import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.concurrent.duration.*
 
 import sttp.client3.{basicRequest, HttpClientFutureBackend, Response, UriContext}
 import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 
 @main def runSttpAsyncClient(): Unit =
-  given executionContext: ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
+  given ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
 
-  val client = HttpClient
-                .newBuilder
-                .executor( Executors.newVirtualThreadPerTaskExecutor() )
-                .build
+  val client =
+    HttpClient
+      .newBuilder
+      .executor( Executors.newVirtualThreadPerTaskExecutor() )
+      .build
 
   val backend = Slf4jLoggingBackend( HttpClientFutureBackend.usingClient(client) )
 
@@ -26,7 +27,7 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
     parseResponse(response)
   finally backend.close()
 
-  def parseResponse(response: concurrent.Future[Response[Either[String, String]]]): Unit =
+  def parseResponse(response: Future[Response[Either[String, String]]]): Unit =
     for
       r <- response
     yield
