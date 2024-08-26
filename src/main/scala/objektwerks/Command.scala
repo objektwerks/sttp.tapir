@@ -3,7 +3,6 @@ package objektwerks
 import com.github.plokhotnyuk.jsoniter_scala.core.*
 import com.github.plokhotnyuk.jsoniter_scala.macros.*
 
-final case class Command(name: String)
+import sttp.tapir.*
 
-object Command:
-  given JsonValueCodec[Command] = JsonCodecMaker.make[Command]
+final case class Command(name: String) derives ConfiguredJsonValueCodec, Schema
