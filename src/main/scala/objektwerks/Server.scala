@@ -1,7 +1,10 @@
 package objektwerks
 
-import java.util.concurrent.Executors
+import com.github.plokhotnyuk.jsoniter_scala.core.writeToString
 
+import java.util.concurrent.Executors
+import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
+import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 import sttp.tapir.*
 import sttp.tapir.json.jsoniter.*
 import sttp.tapir.server.jdkhttp.*
@@ -13,7 +16,10 @@ import sttp.tapir.server.jdkhttp.*
       .in(jsonBody[Command])
       .out(jsonBody[Event])
       .handleSuccess { command =>
-        Event(command.name)
+        println(s"endpoint command: $command")
+        val event = Event(command.name)
+        println(s"endpoint event: $event")
+        event
       }
 
   val jdkHttpServer =
@@ -23,3 +29,24 @@ import sttp.tapir.server.jdkhttp.*
       .port(7777)
       .addEndpoint(commandEndpoint)
       .start()
+
+  val httpClient = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
+
+  try
+    val command = Command("test")
+    val commandJson = writeToString(command)
+    val request = basicRequest
+      .contentType("application/json")
+      .body(commandJson)
+      .post(uri"http://localhost:7777/command")
+    val response = httpClient.send(request)
+    println(s"*** Client command: $command")
+    println(parseResponse(response.body))
+  finally
+    httpClient.close()
+    jdkHttpServer.stop(0)
+
+  def parseResponse(response: Either[String, String]): String =
+    response match
+      case Left(error) => s"*** Client error: $error"
+      case Right(event) => s"*** Client event: $event"
