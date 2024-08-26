@@ -12,13 +12,13 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 @main def runSttpAsyncClient(): Unit =
   given ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
 
-  val client =
+  val httpClient =
     HttpClient
       .newBuilder
       .executor( Executors.newVirtualThreadPerTaskExecutor() )
       .build
 
-  val backend = Slf4jLoggingBackend( HttpClientFutureBackend.usingClient(client) )
+  val backend = Slf4jLoggingBackend( HttpClientFutureBackend.usingClient(httpClient) )
 
   try
     val request = basicRequest.get(uri"https://api.chucknorris.io/jokes/random")
