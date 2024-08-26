@@ -32,7 +32,7 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
       response <- futureResponse
     yield
       response.body match
-        case Left(error) => s"*** Sttp Async Client error: $error"
-        case Right(json) => s"*** Sttp Async Client response: ${parseJson(json)}"
+        case Left(error) => s"*** Async Client error: $error"
+        case Right(json) => s"*** Async Client response: ${parseJson(json)}"
 
   def parseJson(json: String): String = ujson.read(json)("value").str
