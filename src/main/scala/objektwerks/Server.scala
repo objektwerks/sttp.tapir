@@ -20,9 +20,9 @@ import Event.given
       .in(jsonBody[Command])
       .out(jsonBody[Event])
       .handleSuccess { command =>
-        println(s"*** endpoint command: $command")
+        println(s"*** Endpoint command: $command")
         val event = Event("command done")
-        println(s"*** endpoint event: $event")
+        println(s"*** Endpoint event: $event")
         event
       }
 
