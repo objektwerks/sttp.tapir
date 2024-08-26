@@ -11,6 +11,7 @@ libraryDependencies ++= {
     "com.softwaremill.sttp.tapir" %% "tapir-core" % tapirVersion,
     "com.softwaremill.sttp.tapir" %% "tapir-jdkhttp-server" % tapirVersion,
     "com.lihaoyi" %% "ujson" % "4.0.1",
+    "ch.qos.logback" % "logback-classic" % "1.5.7",
     "org.scalatest" %% "scalatest" % "3.2.19" % Test
   )
 }
