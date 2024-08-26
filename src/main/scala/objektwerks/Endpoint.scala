@@ -7,7 +7,7 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 import sttp.tapir.*
 import sttp.tapir.server.jdkhttp.*
 
-@main def runTapirEndpoint(): Unit =
+@main def runEndpoint(): Unit =
   val helloEndpoint =
     endpoint
       .get
@@ -24,14 +24,14 @@ import sttp.tapir.server.jdkhttp.*
       .addEndpoint(helloEndpoint)
       .start()
 
-  val client = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
+  val httpClient = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
 
   try
     val request = basicRequest.get(uri"http://localhost:7777/hello?name=Fred Flintstone")
-    val response = client.send(request)
+    val response = httpClient.send(request)
     println( parseResponse(response.body) )
   finally
-    client.close()
+    httpClient.close()
     jdkHttpServer.stop(0)
 
   def parseResponse(response: Either[String, String]): String =
