@@ -9,7 +9,7 @@ import scala.concurrent.duration.*
 import sttp.client3.{basicRequest, HttpClientFutureBackend, Response, UriContext}
 import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 
-@main def runSttpAsyncClient(): Unit =
+@main def runAsyncClient(): Unit =
   given ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
 
   val httpClient =
