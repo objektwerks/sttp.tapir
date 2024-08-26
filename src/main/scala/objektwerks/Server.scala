@@ -3,6 +3,7 @@ package objektwerks
 import com.github.plokhotnyuk.jsoniter_scala.core.writeToString
 
 import java.util.concurrent.Executors
+
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 import sttp.tapir.*
