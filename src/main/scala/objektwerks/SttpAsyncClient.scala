@@ -24,15 +24,15 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
     val request = basicRequest.get(uri"https://api.chucknorris.io/jokes/random")
     val response = request.send(backend)
     Await.result(response, 30.seconds) // Keep the main thread alive for 30 seconds.
-    parseResponse(response)
+    parseResponse(response).map { joke => println(joke) }
   finally backend.close()
 
-  def parseResponse(response: Future[Response[Either[String, String]]]): Unit =
+  def parseResponse(futureResponse: Future[Response[Either[String, String]]]): Future[String] =
     for
-      r <- response
+      response <- futureResponse
     yield
-      r.body match
-        case Left(error) => println( s"*** Sttp Async Client error: $error" )
-        case Right(json) => println( s"*** Sttp Async Client response: ${parseJson(json)}" )
+      response.body match
+        case Left(error) => s"*** Sttp Async Client error: $error"
+        case Right(json) => s"*** Sttp Async Client response: ${parseJson(json)}"
 
   def parseJson(json: String): String = ujson.read(json)("value").str
