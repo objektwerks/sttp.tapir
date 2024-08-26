@@ -1,6 +1,6 @@
 package objektwerks
 
-import com.github.plokhotnyuk.jsoniter_scala.core.writeToString
+import com.github.plokhotnyuk.jsoniter_scala.core.*
 
 import java.util.concurrent.Executors
 
@@ -9,6 +9,9 @@ import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 import sttp.tapir.*
 import sttp.tapir.json.jsoniter.*
 import sttp.tapir.server.jdkhttp.*
+
+import Command.given
+import Event.given
 
 @main def runServer(): Unit =
   val commandEndpoint =
