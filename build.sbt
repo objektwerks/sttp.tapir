@@ -1,6 +1,6 @@
 name := "sttp.tapir"
 organization := "objektwerks"
-version := "0.4-SNAPSHOT"
+version := "0.4"
 scalaVersion := "3.5.1-RC2"
 libraryDependencies ++= {
   val sttpVersion = "3.9.8"
