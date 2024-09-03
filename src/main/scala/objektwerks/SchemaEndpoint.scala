@@ -21,9 +21,9 @@ import Schemas.given
       .in(jsonBody[Command])
       .out(jsonBody[Event])
       .handleSuccess { command =>
-        println(s"*** Endpoint command: $command")
+        println(s"*** SchemaEndpoint command: $command")
         val event = Event("command done")
-        println(s"*** Endpoint event: $event")
+        println(s"*** SchemaEndpoint event: $event")
         event
       }
 
