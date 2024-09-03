@@ -14,7 +14,7 @@ import Command.given
 import Event.given
 import Schemas.given
 
-@main def runServer(): Unit =
+@main def runSchemaEndpoint(): Unit =
   val commandEndpoint =
     endpoint
       .post
