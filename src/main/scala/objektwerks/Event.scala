@@ -3,6 +3,7 @@ package objektwerks
 import com.github.plokhotnyuk.jsoniter_scala.core.*
 import com.github.plokhotnyuk.jsoniter_scala.macros.*
 
-import sttp.tapir.Schema
+final case class Event(name: String)
 
-final case class Event(name: String) derives ConfiguredJsonValueCodec, Schema
+object Event:
+  given JsonValueCodec[Event] = JsonCodecMaker.make[Event](CodecMakerConfig.withDiscriminatorFieldName(None))
