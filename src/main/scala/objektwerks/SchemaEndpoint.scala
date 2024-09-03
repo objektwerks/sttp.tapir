@@ -45,7 +45,7 @@ import Schemas.given
       .body(commandJson)
       .post(uri"http://localhost:7777/command")
     val response = httpClient.send(request)
-    println(s"*** Client command: $command")
+    println(s"*** SchemaEndpoint Client command: $command")
     println(parseResponse(response.body))
   finally
     httpClient.close()
@@ -53,5 +53,5 @@ import Schemas.given
 
   def parseResponse(response: Either[String, String]): String =
     response match
-      case Left(error) => s"*** Client error: $error"
-      case Right(event) => s"*** Client event: $event"
+      case Left(error) => s"*** SchemaEndpoint Client error: $error"
+      case Right(event) => s"*** SchemaEndpoint Client event: $event"
