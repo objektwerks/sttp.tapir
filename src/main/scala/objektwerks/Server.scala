@@ -7,17 +7,14 @@ import java.util.concurrent.Executors
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 import sttp.client3.logging.slf4j.Slf4jLoggingBackend
 import sttp.tapir.*
-import sttp.tapir.generic.auto.*
 import sttp.tapir.json.jsoniter.*
 import sttp.tapir.server.jdkhttp.*
 
 import Command.given
 import Event.given
+import Schemas.given
 
 @main def runServer(): Unit =
-  summon[Schema[Command]]
-  summon[Schema[Event]]
-
   val commandEndpoint =
     endpoint
       .post
