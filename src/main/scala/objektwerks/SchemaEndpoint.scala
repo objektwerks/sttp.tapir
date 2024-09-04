@@ -6,9 +6,11 @@ import java.util.concurrent.Executors
 
 import sttp.client3.{SimpleHttpClient, UriContext, basicRequest}
 import sttp.client3.logging.slf4j.Slf4jLoggingBackend
+import sttp.shared.Identity
 import sttp.tapir.*
 import sttp.tapir.json.jsoniter.*
 import sttp.tapir.server.jdkhttp.*
+import sttp.tapir.swagger.bundle.SwaggerInterpreter
 
 import Command.given
 import Event.given
@@ -27,12 +29,16 @@ import Schemas.given
         event
       }
 
+  val swaggerEndpoints = SwaggerInterpreter()
+    .fromServerEndpoints[Identity](List(commandEndpoint), "SchemaEndpoint", "1.0")
+
   val jdkHttpServer =
     JdkHttpServer()
       .executor(Executors.newVirtualThreadPerTaskExecutor())
       .host("localhost")
       .port(7777)
       .addEndpoint(commandEndpoint)
+      .addEndpoints(swaggerEndpoints)
       .start()
 
   val httpClient = SimpleHttpClient().wrapBackend(Slf4jLoggingBackend(_))
