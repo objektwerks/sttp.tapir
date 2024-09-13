@@ -16,7 +16,7 @@ libraryDependencies ++= {
     "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-core" % jsoniterVersion,
     "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-macros" % jsoniterVersion,
     "com.lihaoyi" %% "ujson" % "4.0.1",
-    "ch.qos.logback" % "logback-classic" % "1.5.7",
+    "ch.qos.logback" % "logback-classic" % "1.5.8",
     "org.scalatest" %% "scalatest" % "3.2.19" % Test
   )
 }
