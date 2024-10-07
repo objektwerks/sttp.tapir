@@ -5,7 +5,7 @@ scalaVersion := "3.5.1"
 libraryDependencies ++= {
   val sttpVersion = "3.9.8"
   val tapirVersion = "1.11.5"
-  val jsoniterVersion = "2.30.14"
+  val jsoniterVersion = "2.30.15"
   Seq(
     "com.softwaremill.sttp.client3" %% "core" % sttpVersion,
     "com.softwaremill.sttp.client3" %% "slf4j-backend" % sttpVersion,
