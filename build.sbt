@@ -3,7 +3,7 @@ organization := "objektwerks"
 version := "0.7-SNAPSHOT"
 scalaVersion := "3.7.0-RC1"
 libraryDependencies ++= {
-  val sttpVersion = "3.10.3"
+  val sttpVersion = "3.10.3" // DON'T UPGRADE to Sttp 4!!!
   val tapirVersion = "1.11.23"
   val jsoniterVersion = "2.33.3"
   Seq(
