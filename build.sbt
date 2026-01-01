@@ -1,7 +1,7 @@
 name := "sttp.tapir"
 organization := "objektwerks"
 version := "0.7-SNAPSHOT"
-scalaVersion := "3.8.0-RC3"
+scalaVersion := "3.8.0-RC4"
 libraryDependencies ++= {
   val sttpVersion = "3.11.0" // DON'T UPGRADE to Sttp 4!!!
   val tapirVersion = "1.13.3"
